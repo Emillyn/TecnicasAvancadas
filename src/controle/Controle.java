@@ -5,26 +5,26 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import dao.Dao;
+import bancoDeDados.RegistraVotoBD;
 import modelo.Voto;
 import visao.TelaDeVotacao;
 
 
 public class Controle implements ActionListener {
 	private Voto voto = new Voto();	
-	private TelaDeVotacao tela;
+	private TelaDeVotacao telaDeVotacao;
 
-	private Dao dao;
+	private RegistraVotoBD registraVoto;
 	
 	public Controle() {
-		tela = new TelaDeVotacao();
-		tela.setVisible(true);
-		tela.setSize(800, 500);
-		tela.setLocationRelativeTo(null);
+		telaDeVotacao = new TelaDeVotacao();
+		telaDeVotacao.setVisible(true);
+		telaDeVotacao.setSize(800, 500);
+		telaDeVotacao.setLocationRelativeTo(null);
 		
-		tela.getBtnVotar().addActionListener(this);
+		telaDeVotacao.getBtnVotar().addActionListener(this);
 	
-		dao = new Dao();
+		registraVoto = new RegistraVotoBD();
 	}
 
 	@Override
@@ -36,20 +36,20 @@ public class Controle implements ActionListener {
 	}
 	
 	public void registraVoto() {
-		if(tela.getRdbtnCandidatoA().isSelected()) {
+		if(telaDeVotacao.getRdbtnCandidatoA().isSelected()) {
 			voto = new Voto();
-			voto.setVoto(tela.getRdbtnCandidatoA().getText());
+			voto.setVoto(telaDeVotacao.getRdbtnCandidatoA().getText());
 			
-			dao.registraVoto(voto);
+			registraVoto.registraVoto(voto);
 			
 			JOptionPane.showMessageDialog(null, "Voto registrado com sucesso!");
 		}
-		else if(tela.getRdbtnCandidatoB().isSelected()) {
+		else if(telaDeVotacao.getRdbtnCandidatoB().isSelected()) {
 			
 			voto = new Voto();	
-			voto.setVoto(tela.getRdbtnCandidatoB().getText());
+			voto.setVoto(telaDeVotacao.getRdbtnCandidatoB().getText());
 			
-			dao.registraVoto(voto);
+			registraVoto.registraVoto(voto);
 			
 			JOptionPane.showMessageDialog(null, "Voto registrado com sucesso!");
 		}
@@ -57,7 +57,7 @@ public class Controle implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Você precisa selecionar um canditado para poder votar!", "Voto não registrado", 1);
 		}
 		
-		tela.buttonGroupVoto().clearSelection();	
+		telaDeVotacao.buttonGroupVoto().clearSelection();	
 	}
 }
 

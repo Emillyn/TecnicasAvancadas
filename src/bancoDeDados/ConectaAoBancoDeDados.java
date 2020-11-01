@@ -1,23 +1,23 @@
-package dao;
+package bancoDeDados;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexaoMySQL {
+public class ConectaAoBancoDeDados {
 	private static Connection connetion = null;
-
-	public ConexaoMySQL(){}
 	
-	public static Connection getConexao(){
-		String servername = "localhost";
+	public ConectaAoBancoDeDados(){}
+	
+	public static Connection realizaConexao(){
+		String nomeServidor = "localhost";
 		String database = "ProvaPOOII";
-		String user = "root";
-		String password = "123456";
-		String url = "jdbc:mysql://"+servername+":3306/"+database+"?useTimezone=true&serverTimezone=UTC";
+		String usuario = "root";
+		String senha = "123456";
+		String url = "jdbc:mysql://"+nomeServidor+":3306/"+database+"?useTimezone=true&serverTimezone=UTC";
 		
 		try {
-			connetion=DriverManager.getConnection(url, user, password);
+			connetion=DriverManager.getConnection(url, usuario, senha);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

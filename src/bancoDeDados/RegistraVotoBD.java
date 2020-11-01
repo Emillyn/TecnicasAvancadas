@@ -1,4 +1,4 @@
-package dao;
+package bancoDeDados;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,10 +6,10 @@ import java.sql.SQLException;
 
 import modelo.Voto;
 
-public class Dao {
-		
+public class RegistraVotoBD {
+	
 	public void registraVoto(Voto voto) {
-		Connection connection = ConexaoMySQL.getConexao();
+		Connection connection = ConectaAoBancoDeDados.realizaConexao();
 		String query = "insert into Votacao values (null,?)";
 		
 		try {
@@ -26,48 +26,3 @@ public class Dao {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
