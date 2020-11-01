@@ -2,13 +2,10 @@ package controle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JOptionPane;
-
 import bancoDeDados.RegistraVotoBD;
 import modelo.Voto;
 import visao.TelaDeVotacao;
-
 
 public class Controle implements ActionListener {
 	private Voto voto = new Voto();	
